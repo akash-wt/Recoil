@@ -1,5 +1,5 @@
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { countAtom } from "../store/atom/counterAtom";
+import { countAtom ,evenSelector } from "../store/atom/counterAtom";
 
 function Count() {
   console.log("re-render");
@@ -14,7 +14,14 @@ function Count() {
 
 function CounterValue() {
   const count = useRecoilValue(countAtom);
-  return <div>{count}</div>;
+  const iseven=useRecoilValue(evenSelector);
+  return(
+    <div>
+      <div>{count}</div>
+      {iseven == 0 ? "is even" : " odd"}
+    </div>
+    
+  );
 }
 
 function Buttons() {
